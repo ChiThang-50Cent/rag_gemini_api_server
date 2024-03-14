@@ -17,6 +17,8 @@ def post_question():
     question = json['question']
 
     resp = Q_A(question)
+
+    print(resp)
     
     data = {
         'question' : json['question'],
