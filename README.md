@@ -1,1 +1,1 @@
-# rag_gemini_api_server
+# RAG using Gemini Api deploy using Flask
