@@ -19,7 +19,7 @@ def init_vector_db(relative_path):
     # context = "\n\n".join(str(p.page_content) for p in pages)
     texts = text_splitter.split_documents(pages)
 
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001",google_api_key='AIzaSyAbFiGnRBz_CIZhWbWLZ8gqeXgQvMDtb7o')
+    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001",google_api_key='')
     vector_index = Chroma.from_documents(documents=texts, embedding=embeddings).as_retriever()
 
     return vector_index
@@ -39,7 +39,7 @@ def init_prompt_template():
 def init_model():
     global qa_chain
 
-    model = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key='AIzaSyAbFiGnRBz_CIZhWbWLZ8gqeXgQvMDtb7o',
+    model = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key='',
                              temperature=0.5,convert_system_message_to_human=True)
 
     vector_index = init_vector_db("./data/products_20240309185935.pdf")
