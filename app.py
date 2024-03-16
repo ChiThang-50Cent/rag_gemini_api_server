@@ -11,15 +11,19 @@ from model import init_model, Q_A
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/', methods=['GET'])
+def init():
+    return jsonify({"message" : "Hi"}), 200
+
 @app.route('/api/question', methods=['POST'])
 def post_question():
     json = request.get_json(silent=True)
     question = json['question']
 
     resp = Q_A(question)
-
-    print(resp)
     
+    print(resp)
+
     data = {
         'question' : json['question'],
         'answer' : resp
